@@ -2,10 +2,10 @@ import json
 from glob import glob
 import xlsxwriter
 
-workbook = xlsxwriter.Workbook('total1.xlsx')
+workbook = xlsxwriter.Workbook('<excel file name>.xlsx')
 worksheet = workbook.add_worksheet()
 
-bold = workbook.add_format({'bold': 1})
+bold = workbook.add_format({'bold': 1})     #Styling the excel inputs
 
 worksheet.write('A1', 'Dataset_id', bold)
 worksheet.write('B1', 'Publication Date', bold)
@@ -26,7 +26,9 @@ worksheet.write('P1', 'Date of Deposit', bold)
 worksheet.write('Q1', '#Files', bold)
 worksheet.write('R1', 'Filesize(bytes)', bold)
 
+#Traversing through all the json files in the local folder
 file_list = glob('C:/vA/MetaData_Json/scrap/*.json')
+
 row =1
 for file in file_list:
     inputFile = open(file,"r",encoding="utf8")
